@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import documents, analysis, generation
+from app.api import documents, analysis, generation, export
 
 app = FastAPI(
     title="Auto Business Plan Generator API",
@@ -21,6 +21,7 @@ app.add_middleware(
 app.include_router(documents.router, prefix="/api/documents", tags=["documents"])
 app.include_router(analysis.router, prefix="/api/analysis", tags=["analysis"])
 app.include_router(generation.router, prefix="/api/generation", tags=["generation"])
+app.include_router(export.router, prefix="/api/export", tags=["export"])
 
 @app.get("/")
 async def root():
