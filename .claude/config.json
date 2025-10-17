@@ -1,0 +1,45 @@
+{
+  "project": "auto-business-plan-generator",
+  "version": "1.0.0",
+  "adk_version": "moai-adk-1.0",
+  "workflows": {
+    "spec": "/alfred:1-spec",
+    "build": "/alfred:2-build",
+    "sync": "/alfred:3-sync"
+  },
+  "quality_gates": {
+    "test_first": true,
+    "readable": true,
+    "unified": true,
+    "secured": true,
+    "trackable": true
+  },
+  "agents": {
+    "alfred": {
+      "role": "orchestrator",
+      "description": "Central AI agent coordinating development workflow"
+    },
+    "spec_writer": {
+      "role": "specification",
+      "description": "Generates formal specifications with @SPEC tags"
+    },
+    "test_generator": {
+      "role": "testing",
+      "description": "Creates TDD tests with @TEST tags"
+    },
+    "code_builder": {
+      "role": "implementation",
+      "description": "Implements features with @CODE tags"
+    },
+    "doc_keeper": {
+      "role": "documentation",
+      "description": "Maintains docs with @DOC tags"
+    }
+  },
+  "tag_system": {
+    "spec_prefix": "@SPEC:",
+    "test_prefix": "@TEST:",
+    "code_prefix": "@CODE:",
+    "doc_prefix": "@DOC:"
+  }
+}

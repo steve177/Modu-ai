@@ -1,3 +1,13 @@
+"""
+@CODE:docx-parser-service
+DOCX 파일 파싱 서비스 (표 분석 특화)
+
+Related:
+- @SPEC:FEAT-001 - DOCX Parser with Table Analysis
+- @TEST:docx-parser-unit
+- @DOC:api-docx-parser
+"""
+
 from docx import Document
 from typing import List, Dict, Any
 import logging
@@ -5,12 +15,25 @@ import logging
 logger = logging.getLogger(__name__)
 
 class DocxParser:
-    """DOCX 파일 파싱 서비스 (표 분석 포함)"""
+    """
+    @CODE:docx-parser-service
+    DOCX 파일 파싱 서비스 (표 분석 포함)
+    
+    Implements:
+    - @SPEC:FEAT-001-REQ-001 (Document Parsing)
+    - @SPEC:FEAT-001-REQ-002 (Table Analysis)
+    - @SPEC:FEAT-001-REQ-003 (Section Type Identification)
+    - @SPEC:FEAT-001-REQ-004 (Metadata Extraction)
+    """
     
     @staticmethod
     def parse_document(file_path: str) -> Dict[str, Any]:
         """
+        @CODE:docx-parser-service-parse
         DOCX 문서를 파싱하여 구조화된 데이터 반환
+        
+        Implements: @SPEC:FEAT-001-REQ-001, @SPEC:FEAT-001-REQ-004
+        Tests: @TEST:docx-parser-unit-001, @TEST:docx-parser-unit-004
         
         Args:
             file_path: DOCX 파일 경로
@@ -61,7 +84,11 @@ class DocxParser:
     @staticmethod
     def _parse_table(table, table_idx: int) -> Dict[str, Any]:
         """
+        @CODE:docx-parser-service-table (핵심 기능)
         표를 파싱하여 구조화된 데이터 반환
+        
+        Implements: @SPEC:FEAT-001-REQ-002
+        Tests: @TEST:docx-parser-unit-002
         
         Args:
             table: python-docx Table 객체
@@ -102,7 +129,11 @@ class DocxParser:
     @staticmethod
     def identify_section_type(text: str) -> str:
         """
+        @CODE:docx-parser-service-section
         문단의 섹션 타입 식별
+        
+        Implements: @SPEC:FEAT-001-REQ-003
+        Tests: @TEST:docx-parser-unit-003
         
         Args:
             text: 문단 텍스트
